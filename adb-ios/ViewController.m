@@ -10,7 +10,7 @@
 #import "adb/AdbClient.h"
 
 
-#define IP  "192.168.172.104:26101"
+#define IP  "192.168.214.104:26101"
 //#define IP  "100.77.59.194:26101"
 
 @interface ViewController ()

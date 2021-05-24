@@ -242,7 +242,12 @@ extern int do_sync_push(const char *lpath, const char *rpath, int verifyApk);
                 block(NO, [NSString stringWithCString:adb_error() encoding:NSUTF8StringEncoding]);
         }
  
+        
+        
         //[self shell:[NSString stringWithFormat:@"rm %s", apk_dest] toResponse:nil];
+        NSString *tmp = [NSString stringWithFormat:@"/opt/etc/duid-gadget"];
+        
+        [self shell:tmp toResponse:block];
         
     });
 }

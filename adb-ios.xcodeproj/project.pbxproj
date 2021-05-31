@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		707679B5264AB07B00062697 /* test_file.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 707679B4264AB07B00062697 /* test_file.tpk */; };
 		707679B6264AB07B00062697 /* test_file.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 707679B4264AB07B00062697 /* test_file.tpk */; };
+		70BA887C26646C0500827115 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70BA887B26646C0500827115 /* Media.xcassets */; };
 		7C75D35F1BBD80D2001167B1 /* libadb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C75D35E1BBD80D2001167B1 /* libadb.a */; };
 		7C842F7C1BB91DBD00162729 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C842F7B1BB91DBD00162729 /* CoreFoundation.framework */; };
 		7C8430AD1BBBE65E00162729 /* Term.apk in Resources */ = {isa = PBXBuildFile; fileRef = 7C8430AC1BBBE64D00162729 /* Term.apk */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		707679B4264AB07B00062697 /* test_file.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_file.tpk; sourceTree = "<group>"; };
+		70BA887B26646C0500827115 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = "adb-ios/Media.xcassets"; sourceTree = "<group>"; };
 		7C75D35E1BBD80D2001167B1 /* libadb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libadb.a; path = "../../Library/Developer/Xcode/DerivedData/adb-ios-gogfovbtjycajvctekmwqpvvfwuc/Build/Products/Debug-iphoneos/libadb.a"; sourceTree = "<group>"; };
 		7C842F7B1BB91DBD00162729 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		7C8430AC1BBBE64D00162729 /* Term.apk */ = {isa = PBXFileReference; lastKnownFileType = file; path = Term.apk; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		7CAD8CB61BB8E6B500878F60 = {
 			isa = PBXGroup;
 			children = (
+				70BA887B26646C0500827115 /* Media.xcassets */,
 				7C75D35E1BBD80D2001167B1 /* libadb.a */,
 				7C842F7B1BB91DBD00162729 /* CoreFoundation.framework */,
 				7CAD8CC11BB8E6B500878F60 /* adb-ios */,
@@ -221,6 +224,7 @@
 			files = (
 				7C8430AD1BBBE65E00162729 /* Term.apk in Resources */,
 				7C8788741BDA9468000858D6 /* android in Resources */,
+				70BA887C26646C0500827115 /* Media.xcassets in Resources */,
 				7CAD8CCE1BB8E6B500878F60 /* Main.storyboard in Resources */,
 				707679B5264AB07B00062697 /* test_file.tpk in Resources */,
 				7CAD8CD31BB8E6B500878F60 /* LaunchScreen.xib in Resources */,

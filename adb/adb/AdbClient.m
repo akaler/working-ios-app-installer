@@ -93,9 +93,8 @@ extern int do_sync_push(const char *lpath, const char *rpath, int verifyApk);
 
 -(void) connect:(NSString *)addr didResponse:(ResponseBlock)block
 {
-    printf("WHY CANt this just print what the fudck");
+    
     dispatch_async(_queue, ^{
-
         
         char buf[256];
         char *tmp;
@@ -123,7 +122,11 @@ extern int do_sync_push(const char *lpath, const char *rpath, int verifyApk);
                 block(NO, [NSString stringWithUTF8String:adb_error()]);
         }
        
+       
+        
+        
     });
+    
 
     
     
@@ -164,7 +167,9 @@ extern int do_sync_push(const char *lpath, const char *rpath, int verifyApk);
 -(void) installApk:(NSString *)apkPath flags:(ADBInstallFlag)flags didResponse:(ResponseBlock)block
 {
     dispatch_async(_queue, ^{
-
+        NSString *install_status1 = [NSString stringWithFormat:@"echo Installing..."];
+        [self shell:install_status1 toResponse:block];
+        
         //static const char *const DATA_DEST = "/data/local/tmp/%s";
         static const char *const DATA_DEST = "/home/owner/share/tmp/sdk_tools/%s";
         static const char *const SD_DEST = "/sdcard/tmp/%s";
@@ -245,9 +250,13 @@ extern int do_sync_push(const char *lpath, const char *rpath, int verifyApk);
         
         
         //[self shell:[NSString stringWithFormat:@"rm %s", apk_dest] toResponse:nil];
-        NSString *tmp = [NSString stringWithFormat:@"/opt/etc/duid-gadget"];
         
-        [self shell:tmp toResponse:block];
+        
+//        NSString *tmp = [NSString stringWithFormat:@"/opt/etc/duid-gadget"];
+//        [self shell:tmp toResponse:block];
+        
+        NSString *install_status2 = [NSString stringWithFormat:@"echo Installation complete"];
+        [self shell:install_status2 toResponse:block];
         
     });
 }

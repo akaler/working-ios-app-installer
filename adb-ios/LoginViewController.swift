@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class LoginViewController: UIViewController {
 
@@ -26,11 +27,11 @@ class LoginViewController: UIViewController {
         }
         
         
-        let Url = String(format: "https://unite.healthscitech.org/api/auth/login")
+        let Url = String(format: "http://127.0.0.1:5000/auth/login")
             guard let serviceUrl = URL(string: Url) else { return }
             let parameters: [String: Any] = [
-                        "email" : "test_watch_direct",
-                        "password": "impoofcaprice2"
+                        "email" : "regular_user",
+                        "password": "123"
                 
             ]
             var request = URLRequest(url: serviceUrl)
@@ -50,11 +51,16 @@ class LoginViewController: UIViewController {
                 if let data = data {
                     do {
                         let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        
                        //let decoder = JSONDecoder()
                         
                         //let result = try decoder.decode([String: login_response].self, from:data)
-                        
-                        
+                        print(json)
+                        if let dictionary = json as? [String: Any] {
+                            let DUID_STRING = dictionary["authentication_token"]
+                            print("Printing DUID_STRING line60")
+                            print(DUID_STRING as! String)
+                        }
                         
                         
                         print("gonna print the authentication token again:")
@@ -66,42 +72,23 @@ class LoginViewController: UIViewController {
                     }
                 }
             }.resume()
+        
+        // sending DUID now
+
+        print("sending DUID now")
+        //send_duid()
+        
+        
+        
+        
         }
-        
-        
-        /*
-        let url = URL(string: "https://unite.healthscitech.org/api/auth/login")!
-        var request = URLRequest(url: url)
-        //request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        let parameters: [String: Any] = [
-            "email": "test_watch_direct",
-            "password": "impoofcaprice2"
-        ]
-        request.httpBody = parameters.percentEncoded()
+    
+    
+    @IBAction func sendDuid(_ sender: Any) {
+        send_duid()
+    }
+    
 
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data,
-                let response = response as? HTTPURLResponse,
-                error == nil else {                                              // check for fundamental networking error
-                print("error", error ?? "Unknown error")
-                return
-            }
-
-            guard (200 ... 299) ~= response.statusCode else {                    // check for http errors
-                print("statusCode should be 2xx, but is \(response.statusCode)")
-                print("response = \(response)")
-                return
-            }
-
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
-        }
-
-        task.resume()
-        */
-        
     }
     
     /*
@@ -113,6 +100,102 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+
+
+
+func send_duid() {
+    //sends duid to the backend servers
+    let Url = String(format: "http://127.0.0.1:5000/user/duid")
+        guard let serviceUrl = URL(string: Url) else { return }
+        let parameters: [String: Any] = [
+                    "duid" : "23984320984039284",
+        ]
+        var request = URLRequest(url: serviceUrl)
+        request.httpMethod = "POST"
+        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
+            return
+        }
+        request.httpBody = httpBody
+        request.timeoutInterval = 20
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let response = response {
+                print("printing response")
+                print(response)
+            }
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                   //let decoder = JSONDecoder()
+                    
+                    //let result = try decoder.decode([String: login_response].self, from:data)
+                    
+                    
+                    print(json)
+                    
+                    //print(json["authentication_token"])
+                } catch {
+                    print(error)
+                }
+            }
+        }.resume()
+}
+
+func retrieve_tpk()
+{
+    let Url = String(format: "https://unite.healthscitech.org/api/user/files/:duid")
+        guard let serviceUrl = URL(string: Url) else { return }
+        let parameters: [String: Any] = [
+                    "duid" : "23984320984039284",
+        ]
+        var request = URLRequest(url: serviceUrl)
+        request.httpMethod = "GET"
+        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
+            return
+        }
+        request.httpBody = httpBody
+        request.timeoutInterval = 20
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let response = response {
+                print("printing response")
+                print(response)
+            }
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                   //let decoder = JSONDecoder()
+                    
+                    //let result = try decoder.decode([String: login_response].self, from:data)
+                    
+                    
+                    print(json)
+                    
+                    //print(json["authentication_token"])
+                } catch {
+                    print(error)
+                }
+            }
+        }.resume()
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

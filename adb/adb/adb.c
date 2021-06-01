@@ -1641,9 +1641,9 @@ int handle_host_request(char *service, transport_type ttype, char* serial, int r
             unregister_all_tcp_transports();
         } else {
             char hostbuf[100];
-            // assume port 5555 if no port is specified
+            // assume port 26101 if no port is specified
             if (!strchr(serial, ':')) {
-                snprintf(hostbuf, sizeof(hostbuf) - 1, "%s:5555", serial);
+                snprintf(hostbuf, sizeof(hostbuf) - 1, "%s:26101", serial);
                 serial = hostbuf;
             }
             atransport *t = find_transport(serial);

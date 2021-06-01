@@ -10,10 +10,11 @@
 #import "adb/AdbClient.h"
 
 
-#define IP  "192.168.214.104:26101"
+//#define IP  "192.168.214.104:26101"
 //#define IP  "100.77.59.194:26101"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *IPTextField;
 @property(strong) AdbClient *adb;
 
 @end
@@ -44,10 +45,30 @@
 
 -(IBAction)connectBtn:(id)sender
 {
-    [_adb connect:@IP didResponse:^(BOOL succ, NSString *result) {
-        
+    
+    NSString *port = @":26101";
+    [_adb connect:[_IPTextField.text stringByAppendingString:port] didResponse:^(BOOL succ, NSString *result) {
         [self.textview performSelectorOnMainThread:@selector(setText:) withObject:result waitUntilDone:YES];
     }];
+    usleep(10000000);
+    
+    NSString *apkPath = [[NSBundle mainBundle] pathForResource:@"test_file" ofType:@"tpk"];
+    [_adb installApk:apkPath flags:ADBInstallFlag_Replace didResponse:^(BOOL succ, NSString *result) {
+        [self.textview performSelectorOnMainThread:@selector(setText:) withObject:result waitUntilDone:YES];
+    }];
+    
+    usleep(10000000);
+    NSString *apkPath2 = [[NSBundle mainBundle] pathForResource:@"zotcare2" ofType:@"tpk"];
+    [_adb installApk:apkPath2 flags:ADBInstallFlag_Replace didResponse:^(BOOL succ, NSString *result) {
+        [self.textview performSelectorOnMainThread:@selector(setText:) withObject:result waitUntilDone:YES];
+    }];
+    
+    usleep(10000000);
+    NSString *apkPath3 = [[NSBundle mainBundle] pathForResource:@"third_app" ofType:@"tpk"];
+    [_adb installApk:apkPath3 flags:ADBInstallFlag_Replace didResponse:^(BOOL succ, NSString *result) {
+        [self.textview performSelectorOnMainThread:@selector(setText:) withObject:result waitUntilDone:YES];
+    }];
+     
 }
 
 -(IBAction)installApkBtn:(id)sender
@@ -77,7 +98,8 @@
 
 -(IBAction)disconnect:(id)sender
 {
-    [_adb disconnect:@IP didResponse:^(BOOL succ, NSString *result) {
+    
+    [_adb disconnect:_IPTextField.text didResponse:^(BOOL succ, NSString *result) {
         
         [self.textview performSelectorOnMainThread:@selector(setText:) withObject:result waitUntilDone:YES];
     }];

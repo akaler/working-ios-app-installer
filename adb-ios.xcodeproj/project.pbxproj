@@ -200,7 +200,7 @@
 				TargetAttributes = {
 					7CAD8CBE1BB8E6B500878F60 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 5TRP5PF8Q4;
+						DevelopmentTeam = H2QZX5ZBZ2;
 						LastSwiftMigration = 1240;
 					};
 					7CAD8CD71BB8E6B500878F60 = {
@@ -391,6 +391,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = H2QZX5ZBZ2;
 				INFOPLIST_FILE = "adb-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -408,6 +409,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = H2QZX5ZBZ2;
 				INFOPLIST_FILE = "adb-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

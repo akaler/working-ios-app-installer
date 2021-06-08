@@ -30,8 +30,8 @@ class LoginViewController: UIViewController {
         let Url = String(format: "http://127.0.0.1:5000/auth/login")
             guard let serviceUrl = URL(string: Url) else { return }
             let parameters: [String: Any] = [
-                        "email" : "regular_user",
-                        "password": "123"
+                "email" : userIDTextField.text!,
+                "password": passwordTextField.text!
                 
             ]
             var request = URLRequest(url: serviceUrl)
